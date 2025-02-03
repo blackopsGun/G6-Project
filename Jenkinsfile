@@ -62,7 +62,7 @@ pipeline {
                 script {
                     withDockerRegistry(credentialsId: 'docker-hub', toolName: 'docker') {
                         // Build Docker image
-                        sh "docker build -t petclinic7 ."
+                        sh "docker build -t petclinicG ."
                     }
                 }
             }
@@ -73,7 +73,7 @@ pipeline {
                 script {
                     withDockerRegistry(credentialsId: 'docker-hub', toolName: 'docker') {
                         // Tag Docker image with a version (e.g., build number or commit ID)
-                        def imageTag = "blackopsgun/pet-clinic7:latest"
+                        def imageTag = "blackopsgun/pet-clinicG:latest"
                         sh "docker tag petclinic1 $imageTag"
 
                         // Push to Docker Hub
@@ -87,8 +87,8 @@ pipeline {
             steps {
                 script {
                     // Deploy the container
-                    def containerName = "pet7"
-                    sh "docker run -d --name $containerName -p 8082:8080 blackopsgun/pet-clinic7:latest"
+                    def containerName = "petG"
+                    sh "docker run -d --name $containerName -p 8082:8080 blackopsgun/pet-clinicG:latest"
 
                     // Optionally, verify if the container is running (you could also use docker ps to confirm)
                     sh "docker ps -f name=$containerName"
