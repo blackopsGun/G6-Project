@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/HarshwardhanBaghel/ci-cd-project.git'
+                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/HarshwardhanBaghel/G6-Project.git'
             }
         }
 
@@ -31,7 +31,7 @@ pipeline {
 
         stage('sonar-scanner') {
             steps {
-                withSonarQubeEnv(credentialsId: 'Sonar-token', installationName: 'Sonar-server') {
+                withSonarQubeEnv(credentialsId: 'new-ver-sonar', installationName: 'Sonar-server') {
                     sh '''
                         $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Petclinic \
                         -Dsonar.exclusions=**/*.java \
